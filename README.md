@@ -3,9 +3,6 @@ crawler.py를 실행시키기 전에 같은 로컬의 폴더에 자신의 chrome
 
 - 여기서 [다운로드](http://chromedriver.chromium.org/downloads)
 
-### screenshot
-![screenshot](./img/screen.png)
-
 ### Issue
 1.
     - URL을 통한 태그 검색을 할때, SearchKey(검색어)가 영어일때보다 한글일때 로딩되는 시간이 더 길다.
