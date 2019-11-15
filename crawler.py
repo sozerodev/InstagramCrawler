@@ -23,31 +23,25 @@ login_close = driver.find_element_by_css_selector("button.dCJp8")
 login_close.click()
 
 # 3. 사이트 결과 확인
-# 컨테이너 : div.v1Nh3
-instagrams = driver.find_elements_by_css_selector("div.v1Nh3")
+# 첫번째 게시글 클릭
+FirstPost = driver.find_elements_by_css_selector("div.v1Nh3")[0]
+FirstPost.click()
 
-instagrams = instagrams[:HowMany]
-time.sleep(5)
+# 첫번째 포스트를 클릭하고 뜨기까지 시간 기다리기
+time.sleep(2)
 
 nth = 1
-for instagram in instagrams:
-    # url = album.attrs["href"]
-    # driver.get("https://www.instagram.com/"+url)  로 시도하려 하였으나.. driver에는 attrs요소가 없어서 이렇게 이동 못함
-    # 위의 주석처리된 방법은 뷰티풀솦에서만.
-
-    instagram.click()
-
-    # 사이트 접속 후 로딩 시간 기다리기
-    time.sleep(2)
-
+while nth <= HowMany :
+    time.sleep(1)
     # 본문 내용 수집
     post = driver.find_element_by_css_selector("div.C4VMK span").text
     print(nth,"번째 포스트","="*30)
-    nth += 1
     print(post, end="\n\n")
 
-    close_button = driver.find_element_by_css_selector("button.ckWGn")
-    close_button.click()
+    next_button = driver.find_element_by_css_selector("div.D1AKJ a")
+    next_button.click()
+
+    nth += 1
 
 print("\n\n"+"-"*40)
-print(SearchKey+"에 대한 수집을 마쳤습니다. ^--^")
+print(SearchKey+"에 대한 "+str(HowMany)+"개의 수집을 마쳤습니다. ^--^")
